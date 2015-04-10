@@ -46,7 +46,7 @@ class SQLObject
   end
 
   def self.parse_all(results)
-    return nil if results.empty?
+    return [] if results.empty?
     all_objects = []
     results.each do |hash|
       keys = hash.keys

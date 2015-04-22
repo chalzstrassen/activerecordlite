@@ -1,6 +1,6 @@
 require_relative '02_searchable'
 require 'active_support/inflector'
-
+require 'byebug'
 # Phase IIIa
 class AssocOptions
   attr_accessor(
@@ -14,7 +14,7 @@ class AssocOptions
   end
 
   def table_name
-    class_name.tableize
+    model_class.table_name
   end
 end
 
@@ -36,8 +36,8 @@ end
 class HasManyOptions < AssocOptions
   def initialize(name, self_class_name, options = {})
     defaults = {
-      :class_name => self_class_name.to_s.camelcase,
-      :foreign_key => "#{name}_id".to_sym,
+      :class_name => name.to_s.singularize.camelcase,
+      :foreign_key => "#{self_class_name.underscore}_id".to_sym,
       :primary_key => :id
     }
     merged = defaults.merge(options)
@@ -59,7 +59,13 @@ module Associatable
   end
 
   def has_many(name, options = {})
-    # ...
+    options = HasManyOptions.new(name, self.to_s, options)
+    define_method(name) do
+      foreign_key_id = options.send(:foreign_key)
+      model = options.model_class
+      model.where({foreign_key_id => self.id})
+    end
+
   end
 
   def assoc_options

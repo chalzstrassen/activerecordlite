@@ -52,10 +52,10 @@ module Associatable
   def belongs_to(name, options = {})
     options = BelongsToOptions.new(name, options)
     define_method(name) do
-      foreign_key_id = options.send(:foreign_key)
       model = options.model_class
       model.where({:id => self.id}).first
     end
+    assoc_options[name] = options
   end
 
   def has_many(name, options = {})
@@ -69,8 +69,10 @@ module Associatable
   end
 
   def assoc_options
+    @assoc_options ||= {}
     # Wait to implement this in Phase IVa. Modify `belongs_to`, too.
   end
+
 end
 
 class SQLObject

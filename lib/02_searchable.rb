@@ -16,6 +16,12 @@ module Searchable
 
     parse_all(results)
   end
+
+# This version of where is chainable and returns an instance of a
+# Relation class
+  def where2(params)
+    Relation.new(self.where(params))
+  end
 end
 
 class SQLObject

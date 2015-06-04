@@ -1,4 +1,4 @@
-require '02_searchable'
+require 'relation'
 
 describe 'Searchable' do
   before(:each) { DBConnection.reset }
@@ -40,5 +40,13 @@ describe 'Searchable' do
 
   it '#where returns [] if nothing matches the criteria' do
     expect(Human.where(fname: 'Nowhere', lname: 'Man')).to eq([])
+  end
+
+  it '#where2 returns a Relation object' do
+    expect(Cat.where2(owner_id: 1).class).to eq(Relation)
+  end 
+
+  it "#where2 is chainable" do
+    expect(Cat.where2(owner_id: 3).where2(name: "Markov").relations.length).to eq(1)
   end
 end

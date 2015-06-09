@@ -1,4 +1,4 @@
-require 'relation'
+require_relative '../active_record_lite'
 
 describe 'Searchable' do
   before(:each) { DBConnection.reset }

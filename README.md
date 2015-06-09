@@ -1,8 +1,10 @@
 # ActiveRecord Lite
 
+Object Relational Mapping (ORM) layer in an Model-View-Controller (MVC) design pattern, inspired by Rails Active Record
+
 ## Getting Started
 
-1. Run `bundle install`.
+1. `require_relative active_record_lite` must be run before the examples shown in next section.
 2. To run all of the tests: `rspec spec`.
 
 ## How to use

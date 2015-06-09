@@ -1,4 +1,4 @@
-require '04_associatable2'
+require_relative '../active_record_lite'
 
 describe 'Associatable' do
   before(:each) { DBConnection.reset }

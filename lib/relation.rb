@@ -1,4 +1,3 @@
-require_relative "04_associatable2"
 class Relation
 	def initialize(arr)
 		@relations = arr

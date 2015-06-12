@@ -1,16 +1,6 @@
-class Relation
-	def initialize(arr)
-		@relations = arr
-	end
-
-	attr_accessor :relations
-
-	def [](num)
-		relations[num]
-	end
-
-	def where2(params)
-    results = self.relations.select do |relation|
+class Relation < Array
+	def where(params)
+    results = self.select do |relation|
     	is_match = false
       params.each do |key, val|
         if relation.attributes[key] == val

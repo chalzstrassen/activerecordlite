@@ -23,7 +23,7 @@ end
 
 Models can be saved as tables in the database the same way with [Active Record](http://api.rubyonrails.org/classes/ActiveRecord/Persistence.html) in Rails.
 
-#### 
+#### `all` and `find(id)`
 
 `all`
 Returns all records in the model

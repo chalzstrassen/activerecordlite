@@ -2,6 +2,8 @@
 
 Object Relational Mapping (ORM) layer in an Model-View-Controller (MVC) design pattern, inspired by Rails Active Record
 
+*Note: The `/lib/attr_accessor_object.rb` is not used in this project but demonstrates a usage of metaprogramming*
+
 ## Getting Started
 
 1. `require_relative active_record_lite` must be run before the examples shown in next section.
